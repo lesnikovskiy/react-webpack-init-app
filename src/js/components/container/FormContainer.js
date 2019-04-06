@@ -1,37 +1,29 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Input from "../presentation/Input";
 
-class FormContainer extends Component {
-    constructor() {
-        super();
+const FormContainer = props => {
+    const [formValues, setFormValues] = useState({
+        seo_title: ""
+    });
 
-        this.state = {
-            seo_title: ""
-        };
-
-        this.handleChange = this.handleChange.bind(this);
+    const handleChange = (event) => {
+        setFormValues({ [event.target.id]: event.target.value })
     }
 
-    handleChange(event) {
-        this.setState({[event.target.id]: event.target.value})
-    }
+    const { seo_title } = formValues;
 
-    render() {
-        const { seo_title } = this.state;
-
-        return (
-            <form id="article-form">
-                <Input
-                    text="SEO title"
-                    label="seo_title"
-                    type="text"
-                    id="seo_title"
-                    value={seo_title}
-                    handleChange={this.handleChange}
-                />
-            </form>
-        );
-    }
+    return (
+        <form id="article-form">
+            <Input
+                text="SEO title"
+                label="seo_title"
+                type="text"
+                id="seo_title"
+                value={seo_title}
+                handleChange={handleChange}
+            />
+        </form>
+    );
 }
 
 export default FormContainer;
