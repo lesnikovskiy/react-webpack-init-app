@@ -29,9 +29,9 @@ module.exports = {
     ],
     devServer: {
         https: {
-            // key: fs.readFileSync("./m3scert.key"),
-            // cert: fs.readFileSync("./m3scert.crt"),
-            ca: fs.readFileSync("./m3scert.pem") 
+            key: fs.readFileSync("./localhost.key"),
+            cert: fs.readFileSync("./localhost.crt"),
+            //ca: fs.readFileSync("./key.pem") 
         }
     }
 }
